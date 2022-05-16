@@ -27,3 +27,9 @@ class HaarcascadeDetector(CascadeDetectorModel):
             for (xS, yS, wS, hS) in smile:
                 if (x <= xS) and (y <= yS) and (x + w >= xS + wS) and (y + h >= yS + hS):
                     cv2.rectangle(source_image, (xS, yS), (xS + wS, yS + hS), (0, 255, 0), 2)
+
+        cv2.imshow("Haarcascade Detector", source_image)
+
+    @staticmethod
+    def stop():
+        cv2.destroyAllWindows()

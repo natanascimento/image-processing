@@ -11,16 +11,18 @@ from app.infrastructure.repositories.detector import HaarcascadeDetector
 
 class CameraCapture:
 
+    def __init__(self) -> None:
+        self.__detector = HaarcascadeDetector()
+
     @staticmethod
     def __loading():
         for i in tqdm(range(int(100)), ncols=100):
             time.sleep(0.02)
 
-    @staticmethod
-    def run():
+    def run(self):
         print("[INFO] Reading camera image")
         video = VideoStream(src=0).start()
-        CameraCapture.__loading()
+        self.__loading()
         print("[INFO] Starting FPS Counter")
         fps = FPS().start()
 
@@ -28,15 +30,13 @@ class CameraCapture:
             frame = video.read()
             image = resize(frame, width=720)
 
-            HaarcascadeDetector().run(image)
-
-            cv2.imshow("Image Captured", image)
+            self.__detector.run(image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 print("[INFO] Detector was been paused!")
                 break
 
         fps.stop()
-        cv2.destroyAllWindows()
+        self.__detector.stop()
 
         print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
