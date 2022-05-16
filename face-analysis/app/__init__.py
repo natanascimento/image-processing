@@ -1,5 +1,5 @@
-from app.camera.capture import CameraCapture
+from app.infrastructure.repositories.camera.capture import CameraCapture
 
 
 def main():
-  CameraCapture().run()
+    CameraCapture().run()
