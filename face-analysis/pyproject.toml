@@ -12,6 +12,9 @@ start = "app:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+opencv-python = "^4.5.5"
+imutils = "^0.5.4"
+tqdm = "^4.64.0"
 
 [tool.poetry.dev-dependencies]
 
