@@ -13,9 +13,11 @@ start = "app:main"
 [tool.poetry.dependencies]
 python = "^3.8"
 opencv-python = "^3.4.0"
-numpy = "^1.12.0"
 imutils = "^0.5.4"
 tqdm = "^4.64.0"
+tensorflow = "2.3.0"
+numpy = "1.16.0"
+keras = "2.4.3"
 
 [tool.poetry.dev-dependencies]
 

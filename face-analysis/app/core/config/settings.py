@@ -12,3 +12,5 @@ class Settings:
     HAARCASCADE_EYE = join(MODELS_PATH, "haarcascade_eye.xml")
     HAARCASCADE_FACE = join(MODELS_PATH, "haarcascade_frontalface_default.xml")
     HAARCASCADE_SMILE = join(MODELS_PATH, "haarcascade_smile.xml")
+
+    RECOGNITION_MODEL = join(MODELS_PATH, "recognition_model.h5")
