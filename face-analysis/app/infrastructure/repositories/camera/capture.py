@@ -6,13 +6,14 @@ from imutils.video import FPS
 import cv2
 from tqdm import tqdm
 
-from app.infrastructure.repositories.detector import HaarcascadeDetector
+from app.infrastructure.repositories.detector import HaarcascadeDetector, SentimentDetector
 
 
 class CameraCapture:
 
     def __init__(self) -> None:
-        self.__detector = HaarcascadeDetector()
+        self.__haarcascade_detector = HaarcascadeDetector()
+        self.__sentiment_detector = SentimentDetector()
 
     @staticmethod
     def __loading():
@@ -30,13 +31,13 @@ class CameraCapture:
             frame = video.read()
             image = resize(frame, width=720)
 
-            self.__detector.run(image)
+            self.__haarcascade_detector.run(image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 print("[INFO] Detector was been paused!")
                 break
 
         fps.stop()
-        self.__detector.stop()
+        self.__haarcascade_detector.stop()
 
         print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
